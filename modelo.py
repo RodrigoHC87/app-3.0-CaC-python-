@@ -151,37 +151,7 @@ class Abmc(Subject):
 
 
 # ----------------------------------Fun. conteo_de_votos:
-    """
-    def conteo_de_votos(self):
-
-        conteos = {
-            "Voto en Blanco": 0,
-            "Juntos sin el cambio": 0,
-            "La SINiestra": 0,
-            "La libertad no avanza": 0,
-            "Por unión la patria": 0
-        }
-
-        for encuestas in Encuestaa.select():
-            voto = encuestas.voto
-            if voto in conteos:
-                conteos[voto] += 1
-
-        votos_grafico = list(conteos.values())
-        print("blancos:     ", votos_grafico[0])
-        print("juntos:      ", votos_grafico[1])
-        print("siniestra    ", votos_grafico[2])
-        print("libertad:    ", votos_grafico[3])
-        print("union:       ", votos_grafico[4])
-        print("--------------------------------------\n")
-        return votos_grafico
-
-        """
-
 # ------------------------------------------------------------NUEVO!!
-
-
-
     def conteo_de_votos_1(self, categoria, prov_o_reg_selec, rango_edad, partido, my_tree):
 
 
@@ -201,15 +171,6 @@ class Abmc(Subject):
             "Por unión la patria": 0
         }
 
-        """
-        if provincia.get() != "" and region.get() != "" and rango_edad.get() != "" and partido.get() !="":
-            print("afueraaa! strike out --- if")
-            return 0
-
-        if provincia.get() != "" and region.get() != "":
-            print("afueraaa! strike out --- eliif --- campo prov y region somultáneos")
-            return 0
-        """
         if (categoria.get() != "" and prov_o_reg_selec.get() != "") or rango_edad.get() != "" or partido.get() != "":
 
             posibilidades_lista = []

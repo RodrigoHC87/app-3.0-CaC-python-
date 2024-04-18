@@ -60,12 +60,6 @@ class Ventana(Frame):
         # Configurar el estilo de Seaborn
         sns.set(style="white")
 
-
-
-        self.fig1, self.axs2 = plt.subplots(1, dpi=80, figsize=(13, 4), sharey=True, facecolor="lightblue")
-        self.canvas2 = FigureCanvasTkAgg(self.fig1, master=self.frame5)
-        self.canvas2.get_tk_widget().place(x=0, y=0, width=385, height=299)
-
         self.fun_btn_graficar()
 
 #***************************************************************************************************************
@@ -91,24 +85,7 @@ class Ventana(Frame):
 
 
 # ///////////////////////////////// En  Construccion !!!!!!!!!!!!!!!!!!!!!!!!
-        """
-        #--------------->     frame_0.1  // master -> frame_sup
-        frame_0_1 = FrameGenerico(123, 0, 193, 35, 'lightblue', frame_sup)
 
-        LabelGenerico(10, 0, frame_0_1, "Provincia: ", 'tipo0')
-
-        self.filtro_prov = ComboBoxGenerico(80, 0, 100, 20, self.filtro_provincias, frame_0_1,
-                                            'tipo2', "lista_provincias")
-
-
-        #--------------->     frame_0.2  // master -> frame_sup
-        frame_0_2 = FrameGenerico(319, 0, 193, 35, 'grey', frame_sup)
-
-        LabelGenerico(10, 0, frame_0_2, "   Región: ", 'tipo0')
-
-        self.filtro_reg = ComboBoxGenerico(80, 0, 100, 20, self.filtro_regiones, frame_0_2,
-                                                 'tipo2', 'lista_regiones')
-        """
         frame_0_1 = FrameGenerico(123, 0, 389, 35, 'lightblue', frame_sup)
 
         LabelGenerico(45, 0, frame_0_1, "Distribución\nGeográfica: ", 'tipo3')
@@ -239,23 +216,6 @@ class Ventana(Frame):
         frame4 = FrameGenerico(270, 38, 115, 299, "#637A99")
 
 
-        """
-        self.ruta_img_enc = Path("visual/1.encuestar_img.png")
-        self.img_btn_enc = PhotoImage(file=self.ruta_img_enc)
-
-        self.ruta_img_graf = Path("visual/2.img_graficar.png")
-        self.img_btn_graficar = PhotoImage(file=self.ruta_img_graf)
-
-        self.btn_encuestar = BotonGenerico(11, 45, frame4, command=lambda:self.fun_btn_encuestar(),
-                                           config_type='tipo3', config_geo="geometria_t3", image= self.img_btn_enc)
-
-        self.btn_graficar = BotonGenerico(11, 170, frame4, command=lambda:self.fun_btn_graficar(self.frame6),
-                                          config_type='tipo3', config_geo="geometria_t3", image=self.img_btn_graficar)
-        """
-
-
-
-
 #/////////////////////////////////////////////////////////////// 1.6-modelo
 
         self.frame5 = FrameGenerico(0, 340, 385, 299, 'grey')
@@ -374,6 +334,15 @@ class Ventana(Frame):
         # Actualizar el canvas
         self.canvas.draw()
 
+
+        """
+
+            AGREGAR AL Init de la CLASS VENTANA
+        self.fig1, self.axs2 = plt.subplots(1, dpi=80, figsize=(13, 4), sharey=True, facecolor="lightblue")
+        self.canvas2 = FigureCanvasTkAgg(self.fig1, master=self.frame5)
+        self.canvas2.get_tk_widget().place(x=0, y=0, width=385, height=299)
+        ****************************************************************************************************
+
         self.axs2.clear()
 
         # Crear el gráfico de torta con Matplotlib
@@ -388,47 +357,7 @@ class Ventana(Frame):
         plt.axis('equal')  # Para asegurar que el gráfico sea un círculo
 
         # Actualizar el canvas
-        self.canvas2.draw()
-
-
-
-
-        """
-        # Aplicar filtros y obtener los votos
-        votos_grafico = self.fun_aplicar_Filtros()
-        print("votos_grafico     aa   ", votos_grafico)
-
-        # Crear DataFrame para el gráfico
-        df_grafico = pd.DataFrame({
-            'Candidatos': list_candidatos_graf,
-            'Votos': votos_grafico
-            })
-
-        # Configurar el estilo de Seaborn
-        sns.set(style="dark")
-
-
-        # Crear el gráfico con Seaborn
-        fig, axs1 = plt.subplots(1, dpi=80, figsize=(13, 4), sharey=True, facecolor="lightblue")
-
-        sns.barplot(x='Candidatos', y='Votos', data=df_grafico, palette=list_colores_graf,
-                    ax=axs1, hue='Candidatos', legend=False)
-
-        # Configurar etiquetas y ejes
-        axs1.set_ylabel('Cantidad de votos')
-        axs1.set_yticks(range(0, max(votos_grafico) + 1, 1))
-        axs1.set_yticklabels(range(0, max(votos_grafico) + 1, 1))
-
-
-        # Eliminar el widget anterior antes de crear uno nuevo
-        if hasattr(self, 'canvas'):
-            self.canvas.get_tk_widget().destroy()
-
-        # Crear y colocar el gráfico en el frame
-        self.canvas = FigureCanvasTkAgg(fig, master=self.frame6)
-        self.canvas.draw()
-        self.canvas.get_tk_widget().place(x=0, y=0, width=685, height=299)"""
-
+        self.canvas2.draw()"""
 #/////////////////////////////////////////////////////////////// 1.6-modelo FINNNNNNN
 
 
